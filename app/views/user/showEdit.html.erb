@@ -1,0 +1,57 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+	<div class="row">
+        <div class="col-sm-12">
+            <legend>Dojo DashBoard</legend>
+        </div>
+        <div class="col-sm-5">
+            <h4>New Dojo</h4>
+        <form action="/dojos/edit/<%=@dojo.id%>" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+            <div class="panel panel-default">
+                <div class="panel-body form-horizontal payment-form">
+                    <div class="form-group">
+                        <label for="concept" class="col-sm-3 control-label">Street</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="concept" name="street" value="<%=@dojo.street%>">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description" class="col-sm-3 control-label">State</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="description" name="state" value="<%=@dojo.state%>">
+                        </div>
+                    </div> 
+                    <div class="form-group">
+                        <label for="amount" class="col-sm-3 control-label">City</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="amount" name="city" value="<%=@dojo.city%>">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="status" class="col-sm-3 control-label">Branch</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" name="branch" value="<%=@dojo.branch%>">
+                        </div>
+                    </div> 
+                </div>
+            </div>      
+        </div>
+        <div class="col-sm-7">
+            <div class="row">
+                <div class="col-xs-12">
+                    <hr style="border:1px dashed #dddddd;">
+                    <button type="submit" class="btn">Submit</button>
+                </div>                
+            </div>
+        </div>
+        </form>
+	</div>
+</div>
+<div class="container">
+    <div class="row">
+        <a href="/dojos/show">Back</a>
+    </div>
+</div>

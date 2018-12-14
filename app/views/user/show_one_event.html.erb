@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="float-right">
+                <a href="/" class="float-right display-4">Logout</a>
+                <a href="/user/show" class="float-right display-4">  Dashboard</a>
+            </div>  
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p class="display-1"><%=@event.name%></p>
+            <p class="display-4"><%=@event.desc%></p>
+            <p class="display-4">Created by:<%=User.find(@event.creator).first_name%> <%=User.find(@event.creator).last_name%></p>
+            <p class="display-4">Members:</p>
+            <% for i in @event.joins %>
+                <p class="display-4"><%= User.find(i.user_id).first_name %> <%= User.find(i.user_id).last_name %></p>
+            <% end %>
+        </div>
+        <div class="col">
+            <% if User.find(session[:user_id]).joins.where(event_id:@event.id).exists? %>
+                <form action="/user/remove/member/<%=@event.id%>" method="post">
+                    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+                    <input class="btn" type="submit" name="sub" value="Leave">
+                </form>
+            <% else %>
+                <form action="/user/new/member/<%=@event.id%>" method="post">
+                    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+                    <input class="btn" type="submit" name="sub" value="Join">
+                </form>
+            <% end %>
+        </div>
+    </div>
+</div>

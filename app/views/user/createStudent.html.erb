@@ -1,0 +1,62 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+	<div class="row">
+        <div class="col-sm-12">
+            <legend>Student DashBoard</legend>
+        </div>
+        <div class="col-sm-5">
+            <h4>Edit Student</h4>
+        <form action="/dojos/new/student" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <div class="panel panel-default">
+                <div class="panel-body form-horizontal payment-form">
+                    <div class="form-group">
+                        <label for="concept" class="col-sm-3 control-label">First Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="concept" name="first_name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description" class="col-sm-3 control-label">Last Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="description" name="last_name">
+                        </div>
+                    </div> 
+                    <div class="form-group">
+                        <label for="amount" class="col-sm-3 control-label">Email</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="amount" name="email" >
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="amount" class="col-sm-3 control-label">Dojo</label>
+                        <div class="col-sm-9">
+                            
+                            <select name="state">
+                                <% @dojo.each do |i| %>
+                                <option value="<%= i.state %>"><%= i.state %></option>
+                                <% end %>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>      
+        </div>
+        <div class="col-sm-7">
+            <div class="row">
+                <div class="col-xs-12">
+                    <hr style="border:1px dashed #dddddd;">
+                    <button type="submit" class="btn">Submit</button>
+                </div>                
+            </div>
+        </div>
+        </form>
+	</div>
+</div>
+<div class="container">
+    <div class="row">
+        <a href="/dojos/show">Back</a>
+    </div>
+</div>
